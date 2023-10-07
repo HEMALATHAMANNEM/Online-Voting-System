@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+
+    <div class="row">
+        <div class="col col-8 offset-2">
+            <h3 class="alert alert-warning text-center">Caste your Vote</h3>
+            <form method="post">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input type="submit" value="Submit" class="btn btn-primary">
+            </form>
+        </div>
+    </div>
+
+    <!-- <div class="row">
+        <div class="col col-8 offset-2">
+            <h3 class="alert alert-warning text-center">Caste your Vote</h3>
+            
+            <form  method="post">
+                {% csrf_token %}
+                {% for i in data %}
+                   <input type="radio" name="vote" value="{{i.id}}">{{i.firstname}} {{i.lastname}}
+                {% endfor %}
+                <input type="submit" value="Submit" class="btn btn-primary">
+            </form>
+        </div>
+    </div> -->
+
+</div>
+{% endblock content %}

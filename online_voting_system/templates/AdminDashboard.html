@@ -1,0 +1,82 @@
+<!-- {% load static %} -->
+<!DOCTYPE html>
+<html>
+{% include 'header.html' %}
+
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+
+        {% include "navbar.html" %}
+
+        {% include "sidebar.html" %}
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper" style="height: 480px;">
+            <!-- Content Header (Page header) -->
+            <section>
+                <div class="container">
+                  <div style="height: 90px;">
+                  </div>
+                  <div class="row">
+                    <div class=" col-12 col-md-6 py-3 ms-3">
+                        <div class="card text-center h-100">
+                            <img class="card-img-top"
+                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrOBGjSEQSsqx91LV7Aw24OlWL0jc34oDNIA&usqp=CAU"
+                                alt="Card image cap" style="width:150; height:150px">
+                            <div class="card-body">
+                                <h5 class="card-title">Voters</h5>
+                                <p class="card-text">
+                                <a href="{% url 'voterspage' %}"><span>Click to view voter details</span></a>
+                               </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card text-center col-12 col-md-6 py-3">
+                        <img class="card-img-top" style="width:150; height:150px"
+                            src="https://online.norwich.edu/sites/default/files/styles/resource_standard_hero/public/content/resources/header/52.jpg?itok=jPMzLKuO"
+                            alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Candidates</h5>
+                            <p class="card-text">
+                                <a href="{% url 'candidatespage' %}"><span>Click to view candidate details</span></a>
+                            </p>
+                        </div>
+                    </div>
+                   </div>
+                <div style="height: 40px;"></div>
+                   <div class="row">
+                    <div class="card text-center h-100 w-100 col-12 col-md-6 py-3">
+                        <img class="card-img-top" style="width:150; height:150px"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYPCb63qFbmbWbvSx9hmfennehFcHJKyfnGQ&usqp=CAU"
+                            alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Position</h5>
+                            <p class="card-text">
+                                <a href="{% url 'positionspage' %}"><span>Click to view position details</span></a>
+                            </p>
+                    
+                        </div>
+                    </div>
+                    
+                    <div class="card text-center h-100 w-100 col-12 col-md-6 py-3">
+                        <img class="card-img-top" style="width:150; height:150px"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3sXD8p5tyOAZZ4uJUv-Iz6miRujwPX6DPGzR8_bMOvzxnGHguRZMNPKhHRwkFc3v0_iM&usqp=CAU"
+                            alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">View Results</h5>
+                            <p class="card-text">
+                                <a href="{% url 'viewresults' %}"><span>
+                                    Click to view number of votes received by each candidate and winner
+                                </span></a>
+                            </p>
+    
+                        </div>
+                    </div>
+                    </div>
+                  </div>
+            </section>
+        </div>
+        {% include "footer.html" %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col col-8 offset-2">
+            <h3 class="alert alert-warning text-center"> Result </h3>
+            {% if msg %}
+            <h3 class="alert alert-warning text-center"> Voting not yet started </h3>
+            {% else %}
+            <table class="table my-5">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Candidate</th>
+                        <th scope="col">Position</th>
+                        <th scope="col">No.of Votes Received</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in data %}
+                      {% if i in res %}
+                        <tr class="bg-success text-white">
+                            <td scope="row">{{i}}</td>
+                            <td>{{i.position}}</td>
+                            <td>{{i.no_of_votes}}</td>
+                        </tr>
+                      {% else %}
+                        <tr>
+                            <td scope="row">{{i}}</td>
+                            <td>{{i.position}}</td>
+                            <td>{{i.no_of_votes}}</td>
+                        </tr>
+                      {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+            {% if request.user.is_staff %}
+              {% if not a %}
+                 <a href="{% url 'resetvotes' %}" class="btn btn-primary"> Reset Votes </a>
+              {% else %}
+                 <p>{{msg1}}</p>
+              {% endif %}
+              <a href="{% url 'admindashboard' %}" class="btn btn-primary"> Back to Home</a>
+            {% else %}
+              <a href="{% url 'voterdashboard' %}" class="btn btn-primary"> Back to Home</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

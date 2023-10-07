@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h3 class="alert alert-warning text-center"> {{i.name}} </h3>
+    <ul>
+        <li><strong>ID: </strong>{{i.id}}</li>
+        <li><strong>Name: </strong>{{i.name}}</li>
+        <li><strong>Number Of Seats: </strong>{{i.no_of_seats}}</li>
+        <li>
+            <strong>Action</strong>
+            <button>
+                <a href="{% url 'updateposition' i.id %}">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </a>
+            </button>
+
+            <form action="{% url  'deleteposition' i.id %}" method="post" class="d-inline">
+                {% csrf_token %}
+                <button type="submit">
+                    <i class="fa-solid fa-trash "></i>
+                </button>
+            </form>
+        </li>
+    </ul>
+</div>
+{% endblock content %}

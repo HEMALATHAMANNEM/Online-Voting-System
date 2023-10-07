@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+
+    <!-- Forms  -->
+    <div class="row">
+        <div class="col col-8 offset-2">
+            <h3 class="alert alert-warning text-center">Welcome</h3>   
+        </div>
+    </div>
+
+    <!-- <a href="{% url 'voterspage' %}" class="btn btn-primary"> Voters </a>
+    <a href="{% url 'candidatespage' %}" class="btn btn-primary"> Candidates</a>
+    <a href="{% url 'positionspage' %}" class="btn btn-primary"> Positions </a>
+    -->
+    <a href="{% url 'login' %}" class="btn btn-primary"> Login </a>
+     
+</div>
+{% endblock content %}

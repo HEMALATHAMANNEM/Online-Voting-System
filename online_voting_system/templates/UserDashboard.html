@@ -1,0 +1,121 @@
+{% load media %}
+<!DOCTYPE html>
+<html>
+{% include 'header.html' %}
+
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+
+        <header class="main-header">
+            <!-- Logo -->
+            <a href="{% url 'userDashboard' %}" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini">O V S</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Voting System </span>
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+        
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="{% media 'userplaceholder.png' %}" class="user-image" alt="User Image">
+                                <span class="hidden-xs">{{ request.user }}</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src="{% media 'userplaceholder.png' %}" class="img-circle" alt="User Image">
+        
+                                    <p>
+                                        {{i.firstname}} {{i.lastname}}
+                                    </p>
+                                </li>
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="#profile" data-toggle="modal" class="btn btn-primary btn-flat"
+                                            id="voterupd">Update</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="{% url 'account_logout' %}" class="btn btn-danger btn-flat">Logout</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        
+
+        {% include "sidebar.html" %}
+
+
+        <div class="modal fade" id="config">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title"><b>Configure</b></h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <form class="form-horizontal" method="POST" action="{% url 'ballot_title'  %}">
+                                <div class="form-group">
+                                    {% csrf_token %}
+                                    <label for="title" class="col-sm-3 control-label">Title</label>
+
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" required id="title" name="title"
+                                            value="{{ TITLE }}">
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger btn-flat pull-left" data-dismiss="modal"><i
+                                class="fa fa-close"></i> Close</button>
+                        <button type="submit" class="btn btn-success btn-flat" name="save"><i class="fa fa-save"></i>
+                            Save</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    {{ page_title }}
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                    <li class="active">{{ page_title }}</li>
+                </ol>
+            </section>
+            {% block content %}
+
+            {% endblock content %}
+        </div>
+        {% include "footer.html" %}
+        {% block modal %}
+
+        {% endblock modal %}
+    </div>
+    <!-- {% include "scripts.html"%} -->
+    {% block custom_js %}
+
+    {% endblock custom_js %}
+</body>
+
+
+</html>
